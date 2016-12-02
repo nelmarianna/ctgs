@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   database: ctgs
-  username: ctgsUser
+  username: ctgsuser
   password: 1234
   host: localhost
   port: 5432
@@ -9,14 +9,14 @@ development:
 test:
   adapter: postgresql
   database: ctgs
-  username: ctgsUser
+  username: ctgsuser
   password: 1234
   host: localhost
 
 production:
   adapter: postgresql
   database: ctgs
-  username: ctgsUser
+  username: ctgsuser
   password: 1234
   host: localhost
   port: 5432
