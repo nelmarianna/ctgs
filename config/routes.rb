@@ -12,8 +12,12 @@ Rails.application.routes.draw do
 
 #add user
   get "/addUser" => "pages#add"
-  ####get "/users/new" => "users#new", as: :new_user
   post 'create_user' => 'users#create', as: :create_user      
 
+#application
+get "/applications/new" => "applications#new", :as => :application
+post "/applications" => "applications#create"
+get "/applications" => "applications#index"
+get "/applications/:application_id" => "applications#show"
 
 end

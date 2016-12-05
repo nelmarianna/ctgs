@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205035735) do
+ActiveRecord::Schema.define(version: 20161205073157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 20161205035735) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "applications_conference", id: false, force: :cascade do |t|
+  create_table "applications_conferences", id: false, force: :cascade do |t|
     t.integer "conference_id",  null: false
     t.integer "application_id", null: false
   end
 
-  add_index "applications_conference", ["application_id"], name: "index_applications_conference_on_application_id", using: :btree
-  add_index "applications_conference", ["conference_id"], name: "index_applications_conference_on_conference_id", using: :btree
+  add_index "applications_conferences", ["application_id"], name: "index_applications_conferences_on_application_id", using: :btree
+  add_index "applications_conferences", ["conference_id"], name: "index_applications_conferences_on_conference_id", using: :btree
 
   create_table "applications_requesters", id: false, force: :cascade do |t|
     t.integer "application_id", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20161205035735) do
   add_index "applications_requesters", ["application_id"], name: "index_applications_requesters_on_application_id", using: :btree
   add_index "applications_requesters", ["requester_id"], name: "index_applications_requesters_on_requester_id", using: :btree
 
-  create_table "conference", primary_key: "conference_id", force: :cascade do |t|
+  create_table "conferences", primary_key: "conference_id", force: :cascade do |t|
     t.date     "startDate",  null: false
     t.date     "endDate",    null: false
     t.string   "website",    null: false

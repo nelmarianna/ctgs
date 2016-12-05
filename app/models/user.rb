@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+has_many :application
+
 TYPES = %w( Staff Supervisor Requester)
   before_save :set_type
   validates :type, presence: true, :inclusion => { :in => TYPES }

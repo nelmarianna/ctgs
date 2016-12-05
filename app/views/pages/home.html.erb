@@ -11,6 +11,13 @@
 		<% if current_user.type == "Staff" %>
 			<a href="/addUser"> Add User to System</a>
 		<%end%>
+		<% if current_user.type == "Requester" %>
+			<a href="/applications/new"> Create Application</a>
+			<a href="/applications">View My Applications</a>
+		<%end%>
+		<% if current_user.type == "Supervisor" %>
+			<a href="/applications">Make Reccomendation</a>
+		<%end%>
 	<%end%>
 
 

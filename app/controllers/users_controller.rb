@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 		@type = params[:type]
 
 		@sups = User.where(type: Supervisor)
-		Rails.logger.debug("My object: #{@sups.inspect}")
+	#	Rails.logger.debug("My object: #{@sups.inspect}")
 		render("new")
 	 end
 
@@ -38,11 +38,11 @@ class UsersController < ApplicationController
 
 			render("new")
 		 end
-		Rails.logger.debug(@type)
-		Rails.logger.debug("My object: #{@type.inspect}")
+	#	Rails.logger.debug(@type)
+	#	Rails.logger.debug("My object: #{@type.inspect}")
 
 
-		Rails.logger.info(@user.errors.inspect) 
+	#	Rails.logger.info(@user.errors.inspect) 
 		# if @user.save
 		# 	   flash[:success] = "Created successfully"
 
