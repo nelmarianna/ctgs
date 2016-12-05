@@ -18,3 +18,9 @@ a:hover{
 	background-color: #FFF;
 	color:#000;
 }
+
+body{
+	background-image: url("http://crisscrosstvl.com/wp-content/uploads/2016/05/sunset-plane.png");
+	background-size: cover;
+	position:fixed;
+}
