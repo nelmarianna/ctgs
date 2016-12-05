@@ -1,6 +1,8 @@
+<%= stylesheet_link_tag "/home.css" %>
 <% if user_signed_in? %>
 						<%= link_to 'Sign out', destroy_user_session_path, data:{method: :delete} %>
 <% else %>
+
 <a href="/users/sign_in">Sign In</a>
 <%end%>
 
