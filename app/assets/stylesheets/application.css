@@ -26,9 +26,9 @@ body{
 	font-family:Calibri;
 }
 .centered{
-	margin-left:auto;
-	margin-right: auto;
+	margin:auto;
 	width:350px;
+	height:200px;
 	text-align: center;
 }
 h1{
