@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+						<%= link_to 'Sign out', destroy_user_session_path, data:{method: :delete} %>
+<% else %>
+<a href="/users/sign_in">Sign In</a>
+<%end%>
+
+<body>
+
+	<% if user_signed_in? %>
+	Heeloooooooo <%= current_user.firstName %>
+		<% if current_user.type == "Staff" %>
+			<a href="/addUser"> Add User to System</a>
+		<%end%>
+	<%end%>
+
+
+</body>
