@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+nav{
+	background-color: rgba(200, 200, 200, .5);;
+	padding:3px;
+	margin: 0px;
+}
+body{
+	background-image: url("http://d6vn5uj5sr4f6.cloudfront.net/wp-content/uploads/2015/03/8603567984_9382bb79ed_k.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin:0px;
+	font-family:Calibri;
+}
+.centered{
+	margin-left:auto;
+	margin-right: auto;
+	width:350px;
+	text-align: center;
+}
+h1{
+	font-size: 30px;
+}
+h2{
+	font-size: 30px
+}
