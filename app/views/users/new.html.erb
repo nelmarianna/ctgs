@@ -1,73 +1,70 @@
-<div class="centered">
+<%= stylesheet_link_tag "/add_user.css" %>
+<div class="adduserform">
 <p class="heading1">  Add new <%= @type %></p>
-
+<div class="leftcol"> 
 <%= form_for @user, url: create_user_path do |f| %>
 
 <%= f.hidden_field :type, :value => params[:type] %>
 
-<div>
-	<p class="headings"><%= f.label :first_name %></p><br />
+	<%= f.label :first_name %><br />
 	<%= f.text_field :firstName %>
-</div>
-<div>
-	<p class="headings"><%= f.label :last_name %></p><br />
+
+	<%= f.label :last_name %><br />
 	<%= f.text_field :lastName %>
-</div>
-<div>
-	<p class="headings"><%= f.label :login_id %></p><br />
+
+
+	<%= f.label :login_id %><br />
 	<%= f.text_field :loginID %>
-</div>
-<div>
-	<p class="headings"><%= f.label :password %></p><br />
+
+	<%= f.label :password %><br />
 	<%= f.text_field :password %>
-</div>
-<div>
-	<p class="headings"><%= f.label :email %></p><br />
+
+	<%= f.label :email %><br />
 	<%= f.text_field :email  %>
 </div>
+
+<div class="rightcol"> 
 <% if @type=="Requester" %>
 
-	<div>
-		<p class="headings"><%= f.label :supervisor %></p><br />
+	
+		<%= f.label :supervisor %><br />
 		<%= f.collection_select :sup_id, @sups, :user_id, :firstName, :prompt => "Select a supervisor" %>
-	</div>
-	<div>
+	
 		<p class="headings"><%= f.label :student_number %></p><br />
 		<%= f.text_field :studNumb %>
-	</div>
-	<div>
+
+
 		<p class="headings"><%= f.label :academic_unit %></p><br />
 		<%= f.text_field :academicUnit %>
-	</div>
-	<div>
+	
 		<p class="headings"><%= f.label :program %></p><br />
 		<%= f.text_field :program %>
-	</div>
-	<div>
+
 		<p class="headings"><%= f.label :session_number%></p><br />
 		<%= f.text_field :sessionNumber %>
-	</div>
-	<div>
+	
 		<p class="headings"><%= f.label :thesis_topic %></p><br />
 		<%= f.text_field :thesisTopic %>
-	</div>
-	<div>
+	
 		<p class="headings"><%= f.label :bank_account_number%></p><br />
 		<%= f.text_field :bankAccNumb %>
-	</div>
-<% end %>
-<% if @type=="Supervisor" %>
-	<div>
-		<p class="headings"><%= f.label :employee_number%></p><br />
-		<%= f.text_field :employeeNumb %>
-	</div>
-	<div>
-		<p class="headings"><%= f.label :grant_account_number%></p><br />
-		<%= f.text_field :grantAccNumb %>
-	</div>
-<% end %>
-
-<%= f.submit 'Create TYPEHEREr' %>
 
 <% end %>
 </div>
+<% if @type=="Supervisor" %>
+	
+		<p class="headings"><%= f.label :employee_number%></p><br />
+		<%= f.text_field :employeeNumb %>
+	
+		<p class="headings"><%= f.label :grant_account_number%></p><br />
+		<%= f.text_field :grantAccNumb %>
+
+<% end %>
+
+<%= f.submit 'Create User',:class => "btn btn-primary btn-block btn-large"  %>
+
+</div>
+<% end %>
+</form>
+
+<body class="adduser"></body>
