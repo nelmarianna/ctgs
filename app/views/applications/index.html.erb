@@ -1,20 +1,50 @@
 <%= stylesheet_link_tag "/apps.css" %>
-<div class="app-back">
-<h1> My Applications </h1>
 
 
+<body class="apps">
+	<section>
+  <!--for demo wrap-->
+  <h1>My Applications</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Application Title</th>
+          <th>Application Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+ <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
 <% @applications.each do |app| %>
-
-<h3> TITLE: <%= app.presentationTitle %> </h3></li>
-<h4> STATUS: <%= app.status %> </h4></li>
-
-
-<% if current_user.type == "Supervisor" %>
-	<%if app.status != "approved" || app.status != "draft" %> </h4></li>
-		<a href="/applications/<%= app.application_id %>">Review Application</a>
-	<% end %>
-<%end%>
-
+        <tr>
+          <td><%= app.presentationTitle %></td>
+          <td><%= app.status %></td>
+          <td><% if current_user.type == "Supervisor" %>
+		<%if app.status != "pending faculty evaluation"  %> 
+			<%if app.status != "draft"  %>
+				<a href="/applications/<%= app.application_id %>">Review Application</a>
+			<% end %>
+		<% end %>
+	<%end%></td>
+        </tr>
 <% end %>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 </div>
-<body class="apps"></body>
+</body>
+
+<script>
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+</script>

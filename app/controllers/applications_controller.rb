@@ -73,7 +73,7 @@ class ApplicationsController < ApplicationController
 	 			@applications = []
 
 	 			@requesters = User.where(sup_id:  current_user.user_id)
-Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
+		#Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 	 			@requesters.each do |r|
 	 				newReq = ApplicationsRequester.where(requester_id: r.user_id)
 	 				@appReqs += newReq if newReq
@@ -114,13 +114,16 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 		@app = Application.find(params[:application_id])
 
 		if params[:commit] == 'Approve Application'
-	 		if @app.update_attribute(:status, "approved")
+	 		if @app.update_attribute(:status, "pending faculty evaluation")
+	 			flash[:success] = "Application approved !! Requester and FGPS Staff notified"
 	 			redirect_to "/home"
 	 		else
 	 			render("edit")
 	 		end
 	 	elsif params[:commit] == 'Refuse Application'
 			if @app.update_attribute(:status, "refused")
+				flash[:success] = "Application refused. Requester has been notified"
+
 				redirect_to "/home"
 			else
 				render("edit")
@@ -128,7 +131,9 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 		elsif params[:commit] == 'Request Changes'
 			change_param = params[:reqChange]
 			#if change_param.present?
-				if (@app.update_attribute(:status, "pending change") && @app.update_attribute(:reqChange,  change_param))
+				if (@app.update_attribute(:status, "incomplete") && @app.update_attribute(:reqChange,  change_param))
+					flash[:success] = "Application requires modification. Requester has been notified"
+
 					redirect_to "/home"
 				else
 					render("edit")
