@@ -2,19 +2,12 @@
 <div class="app-back">
 <h1> My Applications </h1>
 
-
 <% @applications.each do |app| %>
 
 <h3> TITLE: <%= app.presentationTitle %> </h3></li>
 <h4> STATUS: <%= app.status %> </h4></li>
 
-
-<% if current_user.type == "Supervisor" %>
-	<%if app.status != "approved" || app.status != "draft" %> </h4></li>
-		<a href="/applications/<%= app.application_id %>">Review Application</a>
-	<% end %>
-<%end%>
-
+	<%= link_to_if current_user.type == "Supervisor" && (app.status != "approved" || app.status != "draft"), "Review Application", app %>
 <% end %>
 </div>
 <body class="apps"></body>

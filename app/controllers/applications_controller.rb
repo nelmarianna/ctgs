@@ -2,22 +2,21 @@ class ApplicationsController < ApplicationController
 
 	def new
 	 	@application = Application.new
-	 	@conference = Conference.new 
+	 	@conference = Conference.new
 		render("new")
-	 end
+	end
 
-	 def create
+	def create
 	 	application_params =params.require(:application).permit(:status, :transportation, :registration, :accommodation, :meals, :presentationTitle, :presentationType)
 	 	conference_params = params.require(:conference).permit(:startDate, :endDate, :website, :location)
-	 #	userID =  params[:application][:user_id]
+	 	#userID =  params[:application][:user_id]
 	 	@app = Application.new(application_params)
 	 	@conf = Conference.new(conference_params)
 
-
-	 	 if params[:commit] == 'Submit Application'
-		        # submitted
-		        	@app.status ="pending"
-			 @app.save 
+	 	if params[:commit] == 'Submit Application'
+     	# submitted
+    	@app.status ="pending"
+			@app.save
 		 	@conf.save
 		 	@appReq = ApplicationsRequester.new
 		 	@appReq.requester_id = current_user.user_id
@@ -29,14 +28,16 @@ class ApplicationsController < ApplicationController
 		 	@appConf.application_id = @app.application_id
 		 	@appConf.save
 		 	#notify supervisor if submitted
-	 		@sup = User.where(sup_id: current_user.sup_id)
-	 		flash[:success] = "Application submitted! Supervisor notified"
+	 		@sup = User.find current_user.sup_id
+			NotificationMailer.application_pending_email(@sup, @app).deliver
+
 	 		#redirect to home pg with msg
+	 		flash[:success] = "Application submitted! Supervisor notified"
 	 		redirect_to "/home"
-		 elsif params[:commit] == 'Save and Exit'
-		        #save and exit
-		        	@app.status ="draft"
-		        	@app.save 
+		elsif params[:commit] == 'Save and Exit'
+			#save and exit
+    	@app.status ="draft"
+    	@app.save
 		 	@conf.save
 		 	@appReq = ApplicationsRequester.new
 		 	@appReq.requester_id = current_user.user_id
@@ -48,19 +49,19 @@ class ApplicationsController < ApplicationController
 		 	@appConf.application_id = @app.application_id
 		 	@appConf.save
 
-		 	flash[:success] = "Draft application saved"
 		 	#redirect to home pg with msg
+		 	flash[:success] = "Draft application saved"
 		 	redirect_to "/home"
-    		end
-	 end
+		end
+	end
 
 	 def index
-	 		
+
 	 		if(current_user.type == "Requester")
 	 			#show all applications related to curr user
 	 			@applications = []
 	 			@appReq = ApplicationsRequester.where(requester_id: current_user.user_id).to_a
-	 			
+
 	 			#	Rails.logger.debug("MYYYYYYY OBJECTOOOO: #{@appReq.inspect}")
 	 			@appReq.each do |ar|
 	 				newApp = Application.where(application_id: ar.application_id)
@@ -90,11 +91,11 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 	 	#for sup, allow them to refuse or allow
 		@conference = []
 
-	 	@application = Application.find(params[:application_id])
-#	 	 Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
+		@application = Application.find(params[:application_id])
+		Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
 
-	 	@appConf = ApplicationsConference.where(application_id: params[:application_id]).to_a
-	#  Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
+		@appConf = ApplicationsConference.where(application_id: params[:application_id]).to_a
+		Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
 
 	  	@appConf.each do |c|
 	 		newConf = Conference.where(conference_id: c.conference_id)
@@ -112,15 +113,21 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 	def update
 
 		@app = Application.find(params[:application_id])
+		appreq = ApplicationsRequester.where(application_id: @app.id)
+		req = User.find(appreq.requester_id)
+		staff = User.where(type: Staff).first
 
 		if params[:commit] == 'Approve Application'
 	 		if @app.update_attribute(:status, "approved")
+				NotificationMailer.application_faculty_pending_email(req, @app).deliver
+				NotificationMailer.application_pending_email(staff, @app).deliver
 	 			redirect_to "/home"
 	 		else
 	 			render("edit")
 	 		end
 	 	elsif params[:commit] == 'Refuse Application'
 			if @app.update_attribute(:status, "refused")
+				NotificationMailer.application_refused_email(req, @app).deliver
 				redirect_to "/home"
 			else
 				render("edit")
@@ -129,6 +136,7 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 			change_param = params[:reqChange]
 			#if change_param.present?
 				if (@app.update_attribute(:status, "pending change") && @app.update_attribute(:reqChange,  change_param))
+					NotificationMailer.application_change_email(req, @app).deliver
 					redirect_to "/home"
 				else
 					render("edit")
