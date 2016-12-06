@@ -33,8 +33,25 @@ h2{
 	font-size: 30px
 }
 
-a.sign-in{
+a.sign{
 	margin:5px;
 	float:right;
+	margin-top:0px;
+	text-align: center;
+	display:block;
+	background-color: #ff9966;
+	width:100px;
+	text-decoration: none;
+	color:#FFF;
+	font-size: 20px;
+	padding:3px;
+	border: 2px solid #ff884d;
+	border-radius: 5px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	transition-duration: 0.4s;
+}
+a.sign:hover{
+	background-color: #ff884d;
+	color:#fff;
 }
 
