@@ -1,61 +1,63 @@
 <%= stylesheet_link_tag "/add_user.css" %>
 <div class="adduserform">
-<div class="header">  Add new <%= @type %></div>
 
+<p class="heading1">  Add new <%= @type %></p>
+<% if flash[:error] %>
+    <div class="notice error"><%= flash[:error] %></div>
+  <% end %>
 <%= form_for @user, url: create_user_path do |f| %>
 
 <%= f.hidden_field :type, :value => params[:type] %>
 
+
 	<p class="headings"><%= f.label :first_name %></p>
-	<p class="headings"><%= f.text_field :firstName %></p>
+	<%= f.text_field :firstName, :required => true%>
 
-	<p class="headings"><%= f.label :last_name %><br />
-	<p class="headings"><%= f.text_field :lastName %>
+	<p class="headings"><%= f.label :last_name %></p>
+	<%= f.text_field :lastName, :required => true %>
 
 
-	<p class="headings"><%= f.label :login_id %><br />
-	<p class="headings"><%= f.text_field :loginID %>
+	<p class="headings"><%= f.label :login_id %></p>
+	<%= f.text_field :loginID, :required => true %>
 
-	<p class="headings"><%= f.label :password %><br />
-	<p class="headings"><%= f.text_field :password %>
+	<p class="headings"><%= f.label :password %></p>
+	<%= f.text_field :password, :required => true %>
 
-	<p class="headings"><%= f.label :email %><br />
-	<p class="headings"><%= f.text_field :email  %>
-
+	<p class="headings"><%= f.label :email %></p>
+	<%= f.text_field :email, :required => true  %>
 
 <% if @type=="Requester" %>
 
-	
-		<p class="headings"><%= f.label :supervisor %><br />
-		<p class="headings"><%= f.collection_select :sup_id, @sups, :user_id, :firstName, :prompt => "Select a supervisor" %>
+		<p class="headings"><%= f.label :supervisor %>
+		<%= f.collection_select :sup_id, @sups, :user_id, :firstName, :prompt => "Select a supervisor", :required => true %>
 	
 		<p class="headings"><%= f.label :student_number %></p>
-		<p class="headings"><%= f.text_field :studNumb %></p>
+		<%= f.text_field :studNumb, :required => true %>
 
 
 		<p class="headings"><%= f.label :academic_unit %></p>
-		<p class="headings"><%= f.text_field :academicUnit %></p>
+		<%= f.text_field :academicUnit, :required => true %>
 	
 		<p class="headings"><%= f.label :program %></p>
-		<p class="headings"><%= f.text_field :program %>
+		<%= f.text_field :program, :required => true %>
 
 		<p class="headings"><%= f.label :session_number%></p>
-		<p class="headings"><%= f.text_field :sessionNumber %>
+		<%= f.text_field :sessionNumber, :required => true %>
 	
 		<p class="headings"><%= f.label :thesis_topic %></p>
-		<p class="headings"><%= f.text_field :thesisTopic %></p>
+		<%= f.text_field :thesisTopic, :required => true %>
 	
 		<p class="headings"><%= f.label :bank_account_number%></p>
-		<%= f.text_field :bankAccNumb %></p>
+		<%= f.text_field :bankAccNumb, :required => true %>
 
 <% end %>
 <% if @type=="Supervisor" %>
 	
 		<p class="headings"><%= f.label :employee_number%></p>
-		<p class="headings"><%= f.text_field :employeeNumb %></p>
+		<%= f.text_field :employeeNumb, :required => true %>
 	
 		<p class="headings"><%= f.label :grant_account_number%></p>
-		<p class="headings"><%= f.text_field :grantAccNumb %></p>
+		<%= f.text_field :grantAccNumb, :required => true %>
 
 <% end %>
 <%= f.submit 'Create User',:class => "btn btn-primary btn-block btn-large"  %>

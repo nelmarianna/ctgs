@@ -57,7 +57,8 @@ body {
 .login.remembermebox{
     font-size: 18px;
     font-family:  'Abel', sans-serif;
-    position: absolute;left:12.5%;top:65.5%;
+    position: absolute;
+    left:12.5%;top:65.5%;
     text-align: left;
     
 }
