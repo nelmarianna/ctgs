@@ -21,6 +21,7 @@ nav{
 body{
 	margin:0px;
 	font-family:Calibri;
+	color:#fff;
 }
 .centered{
 	margin:auto;
@@ -28,9 +29,12 @@ body{
 	height:200px;
 	text-align: center;
 }
-h1{
-	font-size: 30px;
-}
 h2{
 	font-size: 30px
 }
+
+a.sign-in{
+	margin:5px;
+	float:right;
+}
+

@@ -7,11 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="centered">
- 	<h2>SEG3102 Deliverable 3 </h2>
-	<h3>Conference Travel Grant System (CTGS)</h3>
+<% if user_signed_in? %>
+						<%= link_to 'Sign out', destroy_user_session_path, data:{method: :delete} %>
+<% else %>
+<div>
+<a class="sign-in" href="/users/sign_in">Sign In</a>
 </div>
+<%end%>
+
 <%= yield %>
 
 </body>
