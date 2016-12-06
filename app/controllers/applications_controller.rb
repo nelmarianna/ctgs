@@ -30,7 +30,7 @@ class ApplicationsController < ApplicationController
 		 	@appConf.save
 		 	#notify supervisor if submitted
 	 		@sup = User.where(sup_id: current_user.sup_id)
-
+	 		flash[:success] = "Application submitted! Supervisor notified"
 	 		#redirect to home pg with msg
 	 		redirect_to "/home"
 		 elsif params[:commit] == 'Save and Exit'
@@ -47,6 +47,8 @@ class ApplicationsController < ApplicationController
 		 	@appConf.conference_id = @conf.conference_id
 		 	@appConf.application_id = @app.application_id
 		 	@appConf.save
+
+		 	flash[:success] = "Draft application saved"
 		 	#redirect to home pg with msg
 		 	redirect_to "/home"
     		end

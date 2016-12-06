@@ -2,6 +2,7 @@
 <div class="app-back">
 <h1> My Applications </h1>
 
+
 <% @applications.each do |app| %>
 
 <h3> TITLE: <%= app.presentationTitle %> </h3></li>
@@ -9,7 +10,9 @@
 
 
 <% if current_user.type == "Supervisor" %>
-	<a href="/applications/<%= app.application_id %>">Review Application</a>
+	<%if app.status != "approved" || app.status != "draft" %> </h4></li>
+		<a href="/applications/<%= app.application_id %>">Review Application</a>
+	<% end %>
 <%end%>
 
 <% end %>
