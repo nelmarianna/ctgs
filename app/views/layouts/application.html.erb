@@ -8,6 +8,7 @@
 </head>
 <body>
 	<a  href="/home">Home</a>
+
 	<% if user_signed_in? %>
 		<%= link_to 'Sign out', destroy_user_session_path, data:{method: :delete}, :class=>"sign" %>
 	<% else %>

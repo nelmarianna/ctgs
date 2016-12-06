@@ -113,9 +113,11 @@ class ApplicationsController < ApplicationController
 	def update
 
 		@app = Application.find(params[:application_id])
-	#	appreq = ApplicationsRequester.where(application_id: @app.application_id)
-	#	req = User.find(appreq.requester_id)
-	#	staff = User.where(type: Staff).first
+
+		appreq = ApplicationsRequester.where(application_id: @app.id).first
+		req = User.find(appreq.requester_id)
+		staff = User.where(type: Staff).first
+
 
 		if params[:commit] == 'Approve Application'
 
