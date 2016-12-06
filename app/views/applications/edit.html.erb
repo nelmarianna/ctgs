@@ -1,0 +1,8 @@
+<%= form_for(@app) do |f| %>
+
+	<%= f.label :Specify_Change %>
+	<%= f.text_area :reqChange %>
+	<%= f.submit "Approve Application" %>
+	<%= f.submit "Refuse Application" %>
+	<%= f.submit "Request Changes" %>
+<%end %>

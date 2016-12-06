@@ -99,15 +99,38 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 	 		@conference += newConf if newConf
 	 	end
 
-	 	if params[:commit] == 'Approve Application'
-
-	 	elsif params[:commit] == 'Refuse Application'
-
-	 	elsif params[:commit] == 'Request Change'
-
-	 	end
-
 	 	render("show")
-
 	 end
+
+	 def edit
+		@app = Application.find(params[:application_id])
+		render("edit")
+	end
+
+	def update
+
+		@app = Application.find(params[:application_id])
+
+		if params[:commit] == 'Approve Application'
+	 		if @app.update_attribute(:status, "approved")
+	 			redirect_to "/home"
+	 		else
+	 			render("edit")
+	 		end
+	 	elsif params[:commit] == 'Refuse Application'
+			if @app.update_attribute(:status, "refused")
+				redirect_to "/home"
+			else
+				render("edit")
+			end
+		elsif params[:commit] == 'Request Changes'
+			change_param = params[:reqChange]
+			if (@app.update_attribute(:status, "pending change") && @app.update_attribute(:reqChange,  change_param))
+				redirect_to "/home"
+			else
+				render("edit")
+			end
+	 	end
+	end
+
 end

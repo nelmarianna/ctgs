@@ -52,11 +52,8 @@
 	
 	<footer>
 	<% if current_user.type == "Supervisor" %>
-		<%= form_for @application do |f| %>
-			<%= f.submit 'Approve Application' %>
-			<%= f.submit 'Refuse Application' %>
-			<%= f.submit 'Request Change' %>
-		<% end %>
+		
+			<%= link_to 'Make Reccomdendation', application_edit_path(:application_id=>@application.application_id ) %>
 	<%end%>
 			
 	</footer>
