@@ -1,25 +1,16 @@
 <%= stylesheet_link_tag "/home.css" %>
-<% if user_signed_in? %>
-						<%= link_to 'Sign out', destroy_user_session_path, data:{method: :delete} %>
-<% else %>
-<div>
-<a class="sign-in" href="/users/sign_in">Sign In</a>
-</div>
-<%end%>
-
-
 
 	<% if user_signed_in? %>
-	Heeloooooooo <%= current_user.firstName %>
+	<div class= "welcome">Welcome <%= current_user.firstName %>!</div>
 		<% if current_user.type == "Staff" %>
-			<a href="/addUser"> Add User to System</a>
+			<a class="do-something fly-right" href="/addUser"> Add User to System</a>
 		<%end%>
 		<% if current_user.type == "Requester" %>
-			<a href="/applications/new"> Create Application</a>
-			<a href="/applications">View My Applications</a>
+			<a class="do-something fly-right" href="/applications/new"> Create Application</a>
+			<a class="do-something fly-right" href="/applications">View My Applications</a>
 		<%end%>
 		<% if current_user.type == "Supervisor" %>
-			<a href="/applications">Make Reccomendation</a>
+			<a class="do-something fly-right" href="/applications">Make Reccomendation</a>
 		<%end%>
 	<%end%>
 

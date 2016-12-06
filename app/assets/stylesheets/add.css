@@ -4,3 +4,38 @@ body.add_user{
     background-repeat: no-repeat;
     background-color: transparent;
 }
+
+.contain{
+	margin-left:650px;
+	width:450px;
+	height:200px;
+	
+}
+.contain a{
+	display:block;
+	text-align: center;
+	line-height: 200px;
+	background-color: #ff9933;
+	text-decoration: none;
+	color:#fff;
+	font-size: 20px;
+	padding:auto;
+	width:48.8%;
+	height:100%;
+	border: 2px solid #ff9933;
+	border-radius: 5px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	transition-duration: 0.4s;
+	margin-top:100px;
+}
+.contain a:hover{
+	background-color:#ffb366;
+}
+
+.contain .left{
+	float:left;
+	
+}
+.contain .right{
+	float:right;
+}

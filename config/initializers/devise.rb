@@ -137,7 +137,7 @@ config.secret_key = '212e41a251e83e8372e192cf763d284e10057b75938abd665b4f31e748f
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [:email]
+  config.confirmation_keys = [:loginID]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.

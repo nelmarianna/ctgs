@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag "/add.css" %>
-<div>
-<%= link_to 'Add Requester', new_user_path(:type=>"Requester") %>
-<%= link_to 'Add Supervisor', new_user_path(:type=>"Supervisor") %>
+
+<div class="contain">
+<%= link_to 'Add Requester', new_user_path(:type=>"Requester"), :class=>"left" %>
+<%= link_to 'Add Supervisor', new_user_path(:type=>"Supervisor"), :class=>"right" %>
 </div>
 <body class="add_user"></body>
