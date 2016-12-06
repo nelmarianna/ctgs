@@ -1,52 +1,62 @@
+<%= stylesheet_link_tag "/applicExp.css" %>
 <%= form_for @application do |f| %>
 
 <%= f.hidden_field :status, :value => "pend" %>
 <%= f.hidden_field :user_id, :value => current_user.user_id %>
+<h2>Create a new Application</h2>
+<div class="applicExpForm">
+<div>
+	<p class="headings"><%= f.label :registration_expense %></p>
+	<%= f.text_field :registration, :required => true %>
+</div>
+<div>
+	<p class="headings"><%= f.label :transportation_expense %></p>
+	<%= f.text_field :transportation, :required => true%>
+</div>
+<div>
+	<p class="headings"><%= f.label :accommodation_expense %></p>
+	<%= f.text_field :accommodation,:required => true %>
+</div>
+<div>
+	<p class="headings"><%= f.label :meal_expense %></p>
+	<%= f.text_field :meals,:required => true %>
+</div>
+<div>
+	<p class="headings"><%= f.label :presentation_title %></p>
+	<%= f.text_field :presentationTitle,:required => true %>
+</div>
+<div>
+	<p class="headings"><%= f.label :presentation_type %></p>
+	<%= f.select :presentationType, ['Verbal Presentation', 'Poster'],:required => true%>
 
-<div>
-	<p class="headings"><%= f.label :registration_expense %></p><br />
-	<%= f.text_field :registration %>
-</div>
-<div>
-	<p class="headings"><%= f.label :transportation_expense %></p><br />
-	<%= f.text_field :transportation%>
-</div>
-<div>
-	<p class="headings"><%= f.label :accommodation_expense %></p><br />
-	<%= f.text_field :accommodation %>
-</div>
-<div>
-	<p class="headings"><%= f.label :meal_expense %></p><br />
-	<%= f.text_field :meals %>
-</div>
-<div>
-	<p class="headings"><%= f.label :presentation_title %></p><br />
-	<%= f.text_field :presentationTitle %>
-</div>
-<div>
-	<p class="headings"><%= f.label :presentation_type %></p><br />
-	<%= f.select :presentationType, ['Verbal Presentation', 'Poster']%>
 </div>
 <hr />
 <%= fields_for @conference do |c| %>
 <p> Conference Details </p>
 	<div>
-		<p class="headings"><%= c.label :conference_start_date %></p><br />
+		<p class="headings"><%= c.label :conference_start_date %></p>
 		<%= c.date_select(:startDate, :order => [:month, :day, :year]) %>
 	</div>
 	<div>
+
 		<p class="headings"><%= c.label :conference_end_date %></p><br />
-		<%= c.date_select(:endDate, :order => [:month, :day, :year]) %>
+		<%= c.date_select(:endDate, :order => [:month, :day, :year])%>
 	</div>
 	<div>
 		<p class="headings"><%= c.label :website_address %></p><br />
-		<%=c.text_field :website %>
+		<%=c.text_field :website, :required => true %>
 	</div>
 	<div>
 		<p class="headings"><%= c.label :conference_location %></p><br />
-		<%= c.text_field :location %>
+		<%= c.text_field :location,:required => true %>
+
 	</div>
+	
+
 <% end %>
-<%= f.submit 'Submit Application' %>
-<%= f.submit 'Save and Exit' %>
+<%= f.submit 'Submit Application',:class => "btn btn-primary btn-block btn-large" %>
+<%= f.submit 'Save and Exit' ,:class => "btn btn-primary btn-block btn-large"%>
+
 <% end %>
+</div>
+<body class="applicExp"></body>

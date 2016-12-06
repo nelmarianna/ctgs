@@ -6,19 +6,19 @@
 
   
   <!--   <%= f.label :login_ID %><br /> -->
-    <%= f.text_field :loginID, autofocus: true,:placeholder => "loginID" %>
+<%= f.text_field :loginID, autofocus: true,:placeholder => "Login ID" %>
  
    <!--  <%= f.label :password %><br /> -->
     <%= f.password_field :password, autocomplete: "off",:placeholder => "Password" %>
  
-<div class= "remembermebox">
+<!-- <div class= "remembermebox">
 
 
   <% if devise_mapping.rememberable? -%>
     
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
-</div>
+</div> -->
   <% end -%>
 
     <%= f.submit "Log in" , :class => "btn btn-primary btn-block btn-large" %>

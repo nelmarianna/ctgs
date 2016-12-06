@@ -55,3 +55,20 @@ a.sign:hover{
 	color:#fff;
 }
 
+.notice{
+	text-align: center;
+	display:block;
+	
+	text-decoration: none;
+	color:#FFF;
+	border-radius: 5px;
+}
+.success{
+	background-color:#33cc33;
+}
+.error{
+	background-color:#ff3300;
+}
+
+
+
