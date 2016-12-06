@@ -89,15 +89,25 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 		@conference = []
 
 	 	@application = Application.find(params[:application_id])
-	 	 Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
+#	 	 Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
 
 	 	@appConf = ApplicationsConference.where(application_id: params[:application_id]).to_a
-	  Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
+	#  Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
 
 	  	@appConf.each do |c|
 	 		newConf = Conference.where(conference_id: c.conference_id)
 	 		@conference += newConf if newConf
 	 	end
+
+	 	if params[:commit] == 'Approve Application'
+
+	 	elsif params[:commit] == 'Refuse Application'
+
+	 	elsif params[:commit] == 'Request Change'
+
+	 	end
+
 	 	render("show")
+
 	 end
 end
