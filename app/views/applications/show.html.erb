@@ -2,29 +2,16 @@
 
 <a href="/applications">Back to Applications</a>
 
-<div id="pagewrap">
+<body class="appShow">
 
-	<header>
-		<h1>Application Details</h1>
-	</header>
-		
-	<section id="content">
-		<h2>Expenses</h2>
-		<h3>Accommodation expenses:</h3>
-		<p> <%= @application.accommodation %></p>
-
-		<h3>Registration  expenses:</h3>
-		<p> <%= @application.registration %></p>
-
-		<h3>Transportation expenses:</h3>
-		<p> <%= @application.transportation %></p>
-
-		<h3>Meal expenses:</h3>
-		<p><%= @application.meals %></p>
-	</section>
-
-<% @conference.each do |conf| %>
-	<section id="middle">
+	<div id="container">
+	        <div id="header">
+	     	  <h1>Application Details</h1>
+	    </div>
+	    
+	    <div id="primary">
+	       <% @conference.each do |conf| %>
+	
 		<h2>Conference Details</h2>
 		<h3>Start Date:</h3>
 		<p><%= conf.startDate %></p>
@@ -37,27 +24,42 @@
 
 		<h3>Website:</h3>
 		<p><%= conf.website %></p>
-	</section>
-<%end%>
+	
+		<%end%>
+	    </div>
+	    
+	    <div id="content">
+	       <h2>Expenses</h2>
+		<h3>Accommodation expenses:</h3>
+		<p> <%= @application.accommodation %></p>
 
-	<aside id="sidebar">
-		<h2>Presentation Details</h2>
+		<h3>Registration  expenses:</h3>
+		<p> <%= @application.registration %></p>
+
+		<h3>Transportation expenses:</h3>
+		<p> <%= @application.transportation %></p>
+
+		<h3>Meal expenses:</h3>
+		<p><%= @application.meals %></p>
+	    </div>
+	    
+	    <div id="secondary">
+	        	<h2>Presentation Details</h2>
 		
 		<h3>Presentation Title:</h3>
 		<p><%= @application.presentationTitle %></p>
 
 		<h3>Presentation Type:</h3>
 		<p><%= @application.presentationType %></p>
-
-
-	</aside>
-	
-	<footer>
-	<% if current_user.type == "Supervisor" %>
+	   </div>
+	    
+	    <div id="footer">
+	      	<% if current_user.type == "Supervisor" %>
 		
-			<%= link_to 'Make Reccomdendation', application_edit_path(:application_id=>@application.application_id ) %>
-	<%end%>
-			
-	</footer>
+			<%= link_to 'Make recommendation for this application', application_edit_path(:application_id=>@application.application_id ) %>
+		<%end%>
+	    </div>
+	</div>
 
-</div>
+
+</body>
