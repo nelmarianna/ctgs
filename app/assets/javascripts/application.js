@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+  $('.notice').fadeOut(5000); // 5 seconds x 1000 milisec = 5000 milisec
+});

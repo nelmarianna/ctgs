@@ -58,10 +58,12 @@ a.sign:hover{
 .notice{
 	text-align: center;
 	display:block;
-	
+	width:400px;
 	text-decoration: none;
 	color:#FFF;
 	border-radius: 5px;
+	animation: cssAnimation 0s ease-in 5s forwards;
+	margin:0 auto;
 }
 .success{
 	background-color:#33cc33;
