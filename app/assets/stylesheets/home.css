@@ -1,21 +1,4 @@
-a{
-	text-align: center;
-	display:block;
-	background-color: #008CBA;
-	width:100px;
-	text-decoration: none;
-	color:#FFF;
-	font-size: 20px;
-	padding:3px;
-	border: 2px solid #008CBA;
-	border-radius: 5px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	transition-duration: 0.4s;
-}
-a:hover{
-	background-color: #FFF;
-	color:#000;
-}
+
 
 .welcome{
 	float:right;
