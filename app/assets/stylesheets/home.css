@@ -2,6 +2,8 @@
 
 .welcome{
 	float:right;
+	margin:5px;
+	padding:3px;
 }
 
 body.home{
@@ -11,3 +13,27 @@ body.home{
     background-color: transparent;
 }
 
+.do-something{
+	margin:5px;
+	padding:3px;
+	position:absolute;
+	top:40%;
+	text-align: center;
+	display:block;
+	background-color: #42182C;
+	text-decoration: none;
+	color:#fff;
+	font-size: 20px;
+	padding:5px;
+	border: 2px solid #250e19;
+	border-radius: 5px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	transition-duration: 0.4s;
+}
+a.do-something:hover{
+	background-color: #250e19;
+	color:#FFF;
+}
+.fly-right{
+	right:4%;
+}

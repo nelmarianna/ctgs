@@ -33,10 +33,10 @@ h2{
 	font-size: 30px
 }
 
-a.sign-in{
+a.sign{
 	margin:5px;
 	float:right;
-
+	margin-top:0px;
 	text-align: center;
 	display:block;
 	background-color: #ff9966;
@@ -50,8 +50,8 @@ a.sign-in{
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	transition-duration: 0.4s;
 }
-a.sign-in:hover{
+a.sign:hover{
 	background-color: #ff884d;
-	color:#42182C;
+	color:#fff;
 }
 
