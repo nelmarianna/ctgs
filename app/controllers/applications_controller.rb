@@ -58,7 +58,7 @@ class ApplicationsController < ApplicationController
 	 			#show all applications related to curr user
 	 			@applications = []
 	 			@appReq = ApplicationsRequester.where(requester_id: current_user.user_id).to_a
-	 			@supervisor = User.where(user_id: current_user.sup_id)
+	 			
 	 			#	Rails.logger.debug("MYYYYYYY OBJECTOOOO: #{@appReq.inspect}")
 	 			@appReq.each do |ar|
 	 				newApp = Application.where(application_id: ar.application_id)
@@ -86,11 +86,18 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 	 def show
 	 	#for req, render the application they just saved
 	 	#for sup, allow them to refuse or allow
-	 	@application = Application.find(params[:application_id])
-	 	 
-	 	@appConf = ApplicationsConference.where(application_id: @application.application_id).to_a
-	 	@conference = Conference.where(conference_id: @appConf.conference_id)
+		@conference = []
 
+	 	@application = Application.find(params[:application_id])
+	 	 Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
+
+	 	@appConf = ApplicationsConference.where(application_id: params[:application_id]).to_a
+	  Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
+
+	  	@appConf.each do |c|
+	 		newConf = Conference.where(conference_id: c.conference_id)
+	 		@conference += newConf if newConf
+	 	end
 	 	render("show")
 	 end
 end

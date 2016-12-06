@@ -1,15 +1,13 @@
 <h1> My Applications </h1>
-
+test
 <% @applications.each do |app| %>
 
 <h3> TITLE: <%= app.presentationTitle %> </h3></li>
 <h4> STATUS: <%= app.status %> </h4></li>
-<% if current_user.type == "Requester" %>
-	<h3> Supervisor: <%= @supervisor.firstName %></h3>
-<%end%>
+
 
 <% if current_user.type == "Supervisor" %>
-	<a href="/applications/<%= app.application_id %>">Make Reccomendation for this Application</a>
+	<a href="/applications/<%= app.application_id %>">Review Application</a>
 <%end%>
 
 <% end %>
