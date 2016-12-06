@@ -25,12 +25,11 @@ class UsersController < ApplicationController
 
 		@user = User.new(new_user_params)
 
-		 if ((@type=="Requester") && (@user.firstName).present? && (@user.lastName).present?)
+		 if (@type=="Requestor" && @user.update(new_user_params))
 			@user.save
 		# 	      flash[:notice] = "Country created successfully"
-
 			redirect_to "/home"
-		 elsif((@type=="Supervisor") && (@user.firstName).present? && (@user.lastName).present?)
+		 elsif((@type=="Supervisor") && @user.update(new_user_params) )
 			@user.save
 		 	redirect_to "/home"
 		 else 
