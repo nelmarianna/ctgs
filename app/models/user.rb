@@ -11,7 +11,7 @@ TYPES = %w( Staff Supervisor Requester)
   validates :type, presence: true, :inclusion => { :in => TYPES }
 
   def set_type
-    raiser "You must override this method in each model inheriting from Product!"
+    raiser "You must override this method in each model inheriting from User!"
   end
 
 end
