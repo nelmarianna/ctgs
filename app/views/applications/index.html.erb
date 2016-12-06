@@ -1,5 +1,7 @@
+<%= stylesheet_link_tag "/apps.css" %>
+<div class="app-back">
 <h1> My Applications </h1>
-test
+
 <% @applications.each do |app| %>
 
 <h3> TITLE: <%= app.presentationTitle %> </h3></li>
@@ -11,3 +13,5 @@ test
 <%end%>
 
 <% end %>
+</div>
+<body class="apps"></body>
