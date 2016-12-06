@@ -92,10 +92,10 @@ class ApplicationsController < ApplicationController
 		@conference = []
 
 		@application = Application.find(params[:application_id])
-		Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
+	#	Rails.logger.debug("BRUHHHHHHHHHHHHHHHHONE #{@application.inspect}")
 
 		@appConf = ApplicationsConference.where(application_id: params[:application_id]).to_a
-		Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
+	#	Rails.logger.debug("BRUHHHHHHHHHHHHHHHHtwoo#{@appConf.inspect}")
 
 	  	@appConf.each do |c|
 	 		newConf = Conference.where(conference_id: c.conference_id)
@@ -113,17 +113,17 @@ class ApplicationsController < ApplicationController
 	def update
 
 		@app = Application.find(params[:application_id])
-		appreq = ApplicationsRequester.where(application_id: @app.id)
-		req = User.find(appreq.requester_id)
-		staff = User.where(type: Staff).first
+	#	appreq = ApplicationsRequester.where(application_id: @app.application_id)
+	#	req = User.find(appreq.requester_id)
+	#	staff = User.where(type: Staff).first
 
 		if params[:commit] == 'Approve Application'
 
 	 		if @app.update_attribute(:status, "pending faculty evaluation")
 	 			flash[:success] = "Application approved !! Requester and FGPS Staff notified"
 
-				NotificationMailer.application_faculty_pending_email(req, @app).deliver
-				NotificationMailer.application_pending_email(staff, @app).deliver
+		#		NotificationMailer.application_faculty_pending_email(req, @app).deliver
+		#		NotificationMailer.application_pending_email(staff, @app).deliver
 
 	 			redirect_to "/home"
 	 		else
@@ -134,7 +134,7 @@ class ApplicationsController < ApplicationController
 
 				flash[:success] = "Application refused. Requester has been notified"
 
-				NotificationMailer.application_refused_email(req, @app).deliver
+		#		NotificationMailer.application_refused_email(req, @app).deliver
 
 				redirect_to "/home"
 			else
@@ -147,7 +147,7 @@ class ApplicationsController < ApplicationController
 				if (@app.update_attribute(:status, "incomplete") && @app.update_attribute(:reqChange,  change_param))
 					flash[:success] = "Application requires modification. Requester has been notified"
 
-					NotificationMailer.application_change_email(req, @app).deliver
+		#			NotificationMailer.application_change_email(req, @app).deliver
 
 					redirect_to "/home"
 				else

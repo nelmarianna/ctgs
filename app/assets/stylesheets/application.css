@@ -13,11 +13,7 @@
  *= require_tree .
  *= require_self
  */
-nav{
-	background-color: rgba(200, 200, 200, .5);;
-	padding:3px;
-	margin: 0px;
-}
+
 body{
 	margin:0px;
 	font-family:Calibri;
@@ -58,10 +54,12 @@ a.sign:hover{
 .notice{
 	text-align: center;
 	display:block;
-	
+	width:400px;
 	text-decoration: none;
 	color:#FFF;
 	border-radius: 5px;
+
+	margin:0 auto;
 }
 .success{
 	background-color:#33cc33;
@@ -69,6 +67,3 @@ a.sign:hover{
 .error{
 	background-color:#ff3300;
 }
-
-
-
