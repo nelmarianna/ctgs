@@ -7,20 +7,20 @@
 <%= f.hidden_field :type, :value => params[:type] %>
 
 	<%= f.label :first_name %><br />
-	<%= f.text_field :firstName %>
+	<%= f.text_field :firstName, :required => true%>
 
 	<%= f.label :last_name %><br />
-	<%= f.text_field :lastName %>
+	<%= f.text_field :lastName, :required => true %>
 
 
 	<%= f.label :login_id %><br />
-	<%= f.text_field :loginID %>
+	<%= f.text_field :loginID, :required => true %>
 
 	<%= f.label :password %><br />
-	<%= f.text_field :password %>
+	<%= f.text_field :password, :required => true %>
 
 	<%= f.label :email %><br />
-	<%= f.text_field :email  %>
+	<%= f.text_field :email, :required => true  %>
 </div>
 
 <div class="rightcol"> 
@@ -28,36 +28,36 @@
 
 	
 		<%= f.label :supervisor %><br />
-		<%= f.collection_select :sup_id, @sups, :user_id, :firstName, :prompt => "Select a supervisor" %>
+		<%= f.collection_select :sup_id, @sups, :user_id, :firstName, :prompt => "Select a supervisor", :required => true %>
 	
 		<p class="headings"><%= f.label :student_number %></p><br />
-		<%= f.text_field :studNumb %>
+		<%= f.text_field :studNumb, :required => true %>
 
 
 		<p class="headings"><%= f.label :academic_unit %></p><br />
-		<%= f.text_field :academicUnit %>
+		<%= f.text_field :academicUnit, :required => true %>
 	
 		<p class="headings"><%= f.label :program %></p><br />
-		<%= f.text_field :program %>
+		<%= f.text_field :program, :required => true %>
 
 		<p class="headings"><%= f.label :session_number%></p><br />
-		<%= f.text_field :sessionNumber %>
+		<%= f.text_field :sessionNumber, :required => true %>
 	
 		<p class="headings"><%= f.label :thesis_topic %></p><br />
-		<%= f.text_field :thesisTopic %>
+		<%= f.text_field :thesisTopic, :required => true %>
 	
 		<p class="headings"><%= f.label :bank_account_number%></p><br />
-		<%= f.text_field :bankAccNumb %>
+		<%= f.text_field :bankAccNumb, :required => true %>
 
 <% end %>
 </div>
 <% if @type=="Supervisor" %>
 	
 		<p class="headings"><%= f.label :employee_number%></p><br />
-		<%= f.text_field :employeeNumb %>
+		<%= f.text_field :employeeNumb, :required => true %>
 	
 		<p class="headings"><%= f.label :grant_account_number%></p><br />
-		<%= f.text_field :grantAccNumb %>
+		<%= f.text_field :grantAccNumb, :required => true %>
 
 <% end %>
 

@@ -5,27 +5,27 @@
 
 <div>
 	<p class="headings"><%= f.label :registration_expense %></p><br />
-	<%= f.text_field :registration %>
+	<%= f.text_field :registration, :required => true %>
 </div>
 <div>
 	<p class="headings"><%= f.label :transportation_expense %></p><br />
-	<%= f.text_field :transportation%>
+	<%= f.text_field :transportation, :required => true%>
 </div>
 <div>
 	<p class="headings"><%= f.label :accommodation_expense %></p><br />
-	<%= f.text_field :accommodation %>
+	<%= f.text_field :accommodation,:required => true %>
 </div>
 <div>
 	<p class="headings"><%= f.label :meal_expense %></p><br />
-	<%= f.text_field :meals %>
+	<%= f.text_field :meals,:required => true %>
 </div>
 <div>
 	<p class="headings"><%= f.label :presentation_title %></p><br />
-	<%= f.text_field :presentationTitle %>
+	<%= f.text_field :presentationTitle,:required => true %>
 </div>
 <div>
 	<p class="headings"><%= f.label :presentation_type %></p><br />
-	<%= f.select :presentationType, ['Verbal Presentation', 'Poster']%>
+	<%= f.select :presentationType, ['Verbal Presentation', 'Poster'],:required => true%>
 </div>
 <hr />
 <%= fields_for @conference do |c| %>
@@ -36,15 +36,15 @@
 	</div>
 	<div>
 		<p class="headings"><%= c.label :conference_end_date %></p><br />
-		<%= c.date_select(:endDate, :order => [:month, :day, :year]) %>
+		<%= c.date_select(:endDate, :order => [:month, :day, :year])%>
 	</div>
 	<div>
 		<p class="headings"><%= c.label :website_address %></p><br />
-		<%=c.text_field :website %>
+		<%=c.text_field :website, :required => true %>
 	</div>
 	<div>
 		<p class="headings"><%= c.label :conference_location %></p><br />
-		<%= c.text_field :location %>
+		<%= c.text_field :location,:required => true %>
 	</div>
 <% end %>
 <%= f.submit 'Submit Application' %>
