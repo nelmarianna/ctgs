@@ -1,0 +1,6 @@
+body.add_user{
+	background-image: url("/assets/add_user_back.jpg");
+	 background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
