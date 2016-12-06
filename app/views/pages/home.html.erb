@@ -7,7 +7,7 @@
 		<%end%>
 		<% if current_user.type == "Requester" %>
 			<a class="do-something fly-right" href="/applications/new"> Create Application</a>
-			<a class="do-something fly-right" href="/applications">View My Applications</a>
+			<a class="do-something fly-left" href="/applications">View My Applications</a>
 		<%end%>
 		<% if current_user.type == "Supervisor" %>
 			<a class="do-something fly-right" href="/applications">Make Reccomendation</a>
