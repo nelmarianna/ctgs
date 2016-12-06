@@ -1,15 +1,64 @@
-Expenses:
-Accommodation expenses: <%= @application.accommodation %>
-Registration expenses: <%= @application.registration %>
-Transportation expenses: <%= @application.transportation %>
-Meal expenses: <%= @application.meals %>
+<%= stylesheet_link_tag "/applicationShow.css" %>
 
-Conference Details:
-Start Date: <%= @conference.startDate %>
-End Date: <%= @conference.endDate %>
-Location: <%= @conference.location %>
-Website: <%= @conference.website %>
+<div id="pagewrap">
 
-Presentation Details:
-Presentation Title: <%= @application.presentationTitle %>
-Presentation Type: <%= @application.presentationType %>
+	<header>
+		<h1>Application Details</h1>
+	</header>
+		
+	<section id="content">
+		<h2>Expenses</h2>
+		<h3>Accommodation expenses:</h3>
+		<p> <%= @application.accommodation %></p>
+
+		<h3>Registration  expenses:</h3>
+		<p> <%= @application.registration %></p>
+
+		<h3>Transportation expenses:</h3>
+		<p> <%= @application.transportation %></p>
+
+		<h3>Meal expenses:</h3>
+		<p><%= @application.meals %></p>
+	</section>
+
+<% @conference.each do |conf| %>
+	<section id="middle">
+		<h2>Conference Details</h2>
+		<h3>Start Date:</h3>
+		<p><%= conf.startDate %></p>
+
+		<h3>End Date:</h3>
+		<p><%= conf.endDate %></p>
+		
+		<h3>Location:</h3>
+		<p><%= conf.location %></p>
+
+		<h3>Website:</h3>
+		<p><%= conf.website %></p>
+	</section>
+<%end%>
+
+	<aside id="sidebar">
+		<h2>Presentation Details</h2>
+		
+		<h3>Presentation Title:</h3>
+		<p><%= @application.presentationTitle %></p>
+
+		<h3>Presentation Type:</h3>
+		<p><%= @application.presentationType %></p>
+
+
+	</aside>
+	
+	<footer>
+	<% if current_user.type == "Supervisor" %>
+		<%= form_for @application do |f| %>
+			<%= f.submit 'Approve Application' %>
+			<%= f.submit 'Refuse Application' %>
+			<%= f.submit 'Request Change' %>
+		<% end %>
+	<%end%>
+			
+	</footer>
+
+</div>
