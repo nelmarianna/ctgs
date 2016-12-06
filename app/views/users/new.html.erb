@@ -1,6 +1,9 @@
 <%= stylesheet_link_tag "/add_user.css" %>
 <div class="adduserform">
 <p class="heading1">  Add new <%= @type %></p>
+<% if flash[:error] %>
+    <div class="notice error"><%= flash[:error] %></div>
+  <% end %>
 <div class="leftcol"> 
 <%= form_for @user, url: create_user_path do |f| %>
 
