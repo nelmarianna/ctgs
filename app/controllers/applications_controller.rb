@@ -125,11 +125,13 @@ Rails.logger.debug("MYYYYYYY requsssss: #{@requesters.inspect}")
 			end
 		elsif params[:commit] == 'Request Changes'
 			change_param = params[:reqChange]
-			if (@app.update_attribute(:status, "pending change") && @app.update_attribute(:reqChange,  change_param))
-				redirect_to "/home"
-			else
-				render("edit")
-			end
+			#if change_param.present?
+				if (@app.update_attribute(:status, "pending change") && @app.update_attribute(:reqChange,  change_param))
+					redirect_to "/home"
+				else
+					render("edit")
+				end
+			#end
 	 	end
 	end
 

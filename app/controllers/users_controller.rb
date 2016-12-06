@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 		 	redirect_to "/home"
 		 else 
 		# 	      flash[:notice] = "CHAHAHAHAHlly"
-
+		
 			render("new")
 		 end
 	#	Rails.logger.debug(@type)
