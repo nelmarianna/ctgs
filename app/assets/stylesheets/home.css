@@ -17,8 +17,8 @@ a:hover{
 	color:#000;
 }
 
-a.sign-in{
-	
+.welcome{
+	float:right;
 }
 
 body.home{
