@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20161206003802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+###### ALL TABLES IN SYSTEM ######
+
   create_table "applications", primary_key: "application_id", force: :cascade do |t|
     t.string   "status",            null: false
     t.integer  "registration",      null: false

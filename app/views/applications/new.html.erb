@@ -1,5 +1,8 @@
 <%= stylesheet_link_tag "/applicExp.css" %>
 
+<!-- This page is a form that is used for requesters to create new applications -->
+
+
 <%= form_for @application do |f| %>
 <%= f.hidden_field :status, :value => "pend" %>
 <%= f.hidden_field :user_id, :value => current_user.user_id %>

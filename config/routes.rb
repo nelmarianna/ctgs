@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+# Describes what URL corresponds with each view
+
   devise_for :users, :controllers => { registrations: 'registrations'}
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :destroy_user
 

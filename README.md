@@ -1,1 +1,6 @@
-# ctgs
+# CTGS SYSTEM
+#CREATED BY: 
+# -LUCIA
+# -XAVIER
+# -MANISHA
+# -NEL

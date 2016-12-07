@@ -1,3 +1,5 @@
+<!-- Home page -->
+
 <%= stylesheet_link_tag "/home.css" %>
 <% if flash[:success] %>
 	<div class="notice success"><%= flash[:success] %></div>
@@ -5,9 +7,7 @@
 <% if flash[:notice] %>
   	  <div class="notice success"><%= flash[:notice] %></div>
   <% end %>
-  <% if flash[:notice] %>
-    <div class="notice success"><%= flash[:notice] %></div>
-  <% end %>
+
 	<% if user_signed_in? %>
 	<div class= "welcome">Welcome <%= current_user.firstName %>!</div>
 		<% if current_user.type == "Staff" %>
